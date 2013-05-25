@@ -3,11 +3,25 @@
   <head>
     <meta charset='UTF-8' />
     <title>pogo</title>
+    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
   </head>
-  <body>
-  	<h1>Pogoda na dziś</h1>
-  	<img style='width: 33%' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=406&col=250&lang=pl' />
-  	<img style='width: 33%' src='http://webservice-pl-pl.weeronline.nl/digits_map/Warszawa/129/m/weather_map/metric/463' />
-  	<img style='width: 33%' src='http://pogodynka.pl/http/assets/products/main_page_maps/day_0000-00-00d.jpg' />
+  <body class='container'>
+    <h1>Pogoda na dziś</h1>
+    <form>
+      <select name='city'>
+        <% Choices.sort.each do |city, params| %>
+          <option>
+            <%= city %>
+          </option>
+        <% end %>
+      </select>
+      <button type="submit" class="btn">wybierz</button>
+    </form>
+    <p></p>
+    <br />
+    <img style='width: 33%' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&amp;row=<%= Choices[@city]['row'] %>&amp;col=<%= Choices[@city]['col'] %>&amp;lang=pl' />
+    <img style='width: 33%' src='http://webservice-pl-pl.weeronline.nl/digits_map/Warszawa/129/m/weather_map/metric/463' />
+    <img style='width: 33%' src='http://pogodynka.pl/http/assets/products/main_page_maps/day_0000-00-00d.jpg' />
   </body>
 </html>
+
