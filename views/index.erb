@@ -10,9 +10,15 @@
     <form>
       <select name='city'>
         <% Choices.sort.each do |city, params| %>
-          <option>
-            <%= city %>
-          </option>
+          <% if @city == city %>
+            <option selected>
+              <%= city %>
+            </option>
+          <% else %>
+            <option>
+             <%= city %>
+           </option>
+          <% end %>
         <% end %>
       </select>
       <button type="submit" class="btn">wybierz</button>
