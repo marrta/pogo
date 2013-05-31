@@ -6,7 +6,7 @@
     <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
   </head>
   <body class='container'>
-    <h1>Pogoda na dziś</h1>
+    <h1>Pogoda na dziś i jutro</h1>
     <form>
       <select name='city'>
         <% Choices.sort.each do |city, params| %>
@@ -20,8 +20,13 @@
     <p></p>
     <br />
     <img style='width: 33%' src='http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&amp;row=<%= Choices[@city]['row'] %>&amp;col=<%= Choices[@city]['col'] %>&amp;lang=pl' />
+    <p> </p> <br />
     <img style='width: 33%' src='http://webservice-pl-pl.weeronline.nl/digits_map/Warszawa/129/m/weather_map/metric/463' />
+    <img style='width: 33%' src='http://webservice-pl-pl.weeronline.nl/digits_map/Warszawa/129/<%= (Date.today + 1).to_s %>/weather_map/metric/463' />
+    <p> </p> <br> />
     <img style='width: 33%' src='http://pogodynka.pl/http/assets/products/main_page_maps/day_0000-00-00d.jpg' />
+    <img style='width: 33%' src='http://www.pogodynka.pl/http/assets/products/main_page_maps/day_<%= (Date.today + 1).to_s %>d.jpg' />
+
   </body>
 </html>
 
