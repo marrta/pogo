@@ -8,7 +8,7 @@
   <body class='container'>
     <h1>Pogoda na dziś i jutro</h1>
     <form>
-      <select name='city'>
+      <select name='city' onchange='submit()'>
         <% @cities.each do |city| %>
           <% if @city == city %>
             <option selected>
@@ -21,7 +21,11 @@
           <% end %>
         <% end %>
       </select>
-      <button type="submit" class="btn">wybierz</button>
+      <button type="submit" class="btn" id="submit">wybierz</button>
+      <script>
+        element = document.getElementById('submit');
+        element.parentNode.removeChild(element);
+      </script>
     </form>
     <p></p>
     <br />
